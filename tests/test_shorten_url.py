@@ -164,9 +164,9 @@ class TestShortenUrl:
         
         # Act
         result = shorten_url(test_url)
-        
-        # Assert
-        assert result == short_url_with_newline  # Returns as-is
+
+        # Assert - CLI behavior strips whitespace by default
+        assert result == short_url_with_newline.strip()
 
     @patch('python_examples.shorten_url.requests.get')
     def test_shorten_url_empty_response(self, mock_get):
